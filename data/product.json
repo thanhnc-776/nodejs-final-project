@@ -1,0 +1,195 @@
+{
+	"header": {
+		"status": 200,
+		"errorMessage": "",
+		"currentDate": "2018-12-10T13:52:11.340Z",
+		"totalCount": 0
+	},
+	"body": [
+		{
+			"_id": "5bcbf511696b664906832519",
+			"name": "Winter Coat from France",
+			"image": "https://via.placeholder.com/600/92c952",
+			"thumbnail": "https://via.placeholder.com/150/92c952",
+			"shortDescription": "product 1",
+			"categoryId": "men",
+			"salePrice": 699,
+			"originalPrice": 800,
+			"images": [
+				"https://via.placeholder.com/600/92c952",
+				"https://via.placeholder.com/600/92c952"
+			],
+			"thumbnails": [
+				"https://via.placeholder.com/150/92c952",
+				"https://via.placeholder.com/150/92c952"
+			]
+		},
+		{
+			"_id": "5bcbf511696b66490683251a",
+			"name": "Italy Bag",
+			"image": "https://via.placeholder.com/600/771796",
+			"thumbnail": "https://via.placeholder.com/150/771796",
+			"shortDescription": "product 2",
+			"categoryId": "women",
+			"salePrice": 199,
+			"originalPrice": 300,
+			"images": [
+				"https://via.placeholder.com/600/771796",
+				"https://via.placeholder.com/600/771796"
+			],
+			"thumbnails": [
+				"https://via.placeholder.com/150/771796",
+				"https://via.placeholder.com/150/771796"
+			]
+		},
+		{
+			"_id": "5bcbf511696b66490683251b",
+			"name": "Coat from France",
+			"image": "https://via.placeholder.com/600/24f355",
+			"thumbnail": "https://via.placeholder.com/150/24f355",
+			"shortDescription": "product 3",
+			"categoryId": "accessories",
+			"salePrice": 599,
+			"originalPrice": 800,
+			"images": [
+				"https://via.placeholder.com/600/24f355",
+				"https://via.placeholder.com/600/24f355"
+			],
+			"thumbnails": [
+				"https://via.placeholder.com/150/24f355",
+				"https://via.placeholder.com/150/24f355"
+			]
+		},
+		{
+			"_id": "5bcbf511696b66490683251c",
+			"name": "Travel Bag from German",
+			"image": "https://via.placeholder.com/600/d32776",
+			"thumbnail": "https://via.placeholder.com/150/d32776",
+			"shortDescription": "product 4",
+			"categoryId": "women",
+			"salePrice": 99,
+			"originalPrice": 300,
+			"images": [
+				"https://via.placeholder.com/600/d32776",
+				"https://via.placeholder.com/600/d32776"
+			],
+			"thumbnails": [
+				"https://via.placeholder.com/150/d32776",
+				"https://via.placeholder.com/150/d32776"
+			]
+		},
+		{
+			"_id": "5bcbf511696b66490683251d",
+			"name": "Modern Shoe from Japan",
+			"image": "https://via.placeholder.com/600/f66b97",
+			"thumbnail": "https://via.placeholder.com/150/f66b97",
+			"shortDescription": "product 5",
+			"categoryId": "men",
+			"salePrice": 199,
+			"originalPrice": 250,
+			"images": [
+				"https://via.placeholder.com/600/f66b97",
+				"https://via.placeholder.com/600/f66b97"
+			],
+			"thumbnails": [
+				"https://via.placeholder.com/150/f66b97",
+				"https://via.placeholder.com/150/f66b97"
+			]
+		},
+		{
+			"_id": "5bcbf511696b66490683251e",
+			"name": "Italy Glasses",
+			"image": "https://via.placeholder.com/600/56a8c2",
+			"thumbnail": "https://via.placeholder.com/150/56a8c2",
+			"shortDescription": "product 6",
+			"categoryId": "women",
+			"salePrice": 99,
+			"originalPrice": 150,
+			"images": [
+				"https://via.placeholder.com/600/56a8c2",
+				"https://via.placeholder.com/600/56a8c2"
+			],
+			"thumbnails": [
+				"https://via.placeholder.com/150/56a8c2",
+				"https://via.placeholder.com/150/56a8c2"
+			]
+		},
+		{
+			"_id": "5bcbf511696b66490683251f",
+			"name": "France Coat",
+			"image": "https://via.placeholder.com/600/b0f7cc",
+			"thumbnail": "https://via.placeholder.com/150/b0f7cc",
+			"shortDescription": "product 7",
+			"categoryId": "accessories",
+			"salePrice": 499,
+			"originalPrice": 590,
+			"images": [
+				"https://via.placeholder.com/600/b0f7cc",
+				"https://via.placeholder.com/600/b0f7cc"
+			],
+			"thumbnails": [
+				"https://via.placeholder.com/150/b0f7cc",
+				"https://via.placeholder.com/150/b0f7cc"
+			]
+		},
+		{
+			"_id": "5bcbf511696b664906832520",
+			"name": "Wool Pocket",
+			"image": "https://via.placeholder.com/600/54176f",
+			"thumbnail": "https://via.placeholder.com/150/54176f",
+			"shortDescription": "product 8",
+			"categoryId": "accessories",
+			"salePrice": 599,
+			"originalPrice": 700,
+			"images": [
+				"https://via.placeholder.com/600/54176f",
+				"https://via.placeholder.com/600/54176f"
+			],
+			"thumbnails": [
+				"https://via.placeholder.com/150/54176f",
+				"https://via.placeholder.com/150/54176f"
+			]
+		},
+		{
+			"_id": "5bcbf511696b664906832521",
+			"name": "Winter Coat from France",
+			"image": "https://via.placeholder.com/600/51aa97",
+			"thumbnail": "https://via.placeholder.com/150/51aa97",
+			"shortDescription": "product 1",
+			"categoryId": "men",
+			"salePrice": 699,
+			"originalPrice": 800,
+			"images": [
+				"https://via.placeholder.com/600/51aa97",
+				"https://via.placeholder.com/600/51aa97"
+			],
+			"thumbnails": [
+				"https://via.placeholder.com/150/51aa97",
+				"https://via.placeholder.com/150/51aa97"
+			]
+		},
+		{
+			"_id": "5bcbf511696b664906832522",
+			"name": "Italy Bag",
+			"image": "https://via.placeholder.com/600/810b14",
+			"thumbnail": "https://via.placeholder.com/150/810b14",
+			"shortDescription": "product 2",
+			"categoryId": "women",
+			"salePrice": 299,
+			"originalPrice": 400,
+			"images": [
+				"https://via.placeholder.com/600/810b14",
+				"https://via.placeholder.com/600/810b14"
+			],
+			"thumbnails": [
+				"https://via.placeholder.com/150/810b14",
+				"https://via.placeholder.com/150/810b14"
+			]
+		}
+	],
+	"pagination": {
+		"limit": 100,
+		"skip": 0,
+		"total": 32
+	}
+}

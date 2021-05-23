@@ -1,0 +1,199 @@
+<div id='page-wrapper'>
+
+	<div class='row'>
+		<div class='col-lg-12'>
+
+			<div class='header-bar page-header'>
+				<h1 class='page-header text-gray-800'>Products List</h1>
+				<a class='header-bar__btn btn btn-success' href='/admin/products/create'><i
+						class='fa fa-plus'
+					></i>
+					Create new product</a>
+			</div>
+
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+	<div class='row'>
+		<div class='col-lg-12'>
+			<div class='panel panel-default'>
+				<div class='panel-heading'>
+					DataTables Advanced Tables
+				</div>
+				<!-- /.panel-heading -->
+				<div class='panel-body'>
+					<div class='sort'>
+						<div class='col-sm-6'>
+							<div class='dataTables_length' id='dataTables-example_length'>
+								<label class='label'>Show
+									<select
+										name='dataTables-example_length'
+										aria-controls='dataTables-example'
+										class='form-control form-format input-sm'
+									>
+										<option value='10'>10</option>
+										<option value='25'>25</option>
+										<option value='50'>50</option>
+										<option value='100'>100</option>
+									</select>
+									entries</label>
+							</div>
+						</div>
+						<div class='col-sm-6'><div id='dataTables-example_filter' class='dataTables_filter'>
+								<label class='label'>Search:
+									<input
+										type='search'
+										class='form-control form-format input-sm'
+										placeholder=''
+										aria-controls='dataTables-example'
+									/>
+								</label>
+							</div>
+						</div>
+					</div>
+					<table
+						width='100%'
+						class='table table-striped table-bordered table-hover'
+						id='dataTables-example'
+					>
+						<thead>
+							<tr>
+								<th>
+									#
+								</th>
+								<th>Name</th>
+								<th>Thumbnail</th>
+								<th>Description</th>
+								<th>Category ID</th>
+								<th>Sale Price</th>
+								<th>Original Price</th>
+								<th>Product Images</th>
+								<th>Action</th>
+								{{!-- <th>
+									#
+									{{{sortable '_id' _sort}}}
+								</th>
+								<th>Name {{{sortable 'name' _sort}}}</th>
+								<th>Thumbnail</th>
+								<th>Description {{{sortable 'shortDescription' _sort}}}</th>
+								<th>Category ID {{{sortable 'categoryId' _sort}}}</th>
+								<th>Sale Price {{{sortable 'salePrice' _sort}}}</th>
+								<th>Original Price {{{sortable 'originalPrice' _sort}}}</th>
+								<th>Product Images</th>
+								<th>Action</th> --}}
+
+							</tr>
+						</thead>
+						<tbody>
+							{{#each products}}
+								<tr>
+									<td>{{_id}}</td>
+									<td>{{name}}</td>
+									<td><img
+											style='border: 1px solid grey'
+											src='{{thumbnail}}'
+											alt='{{name}}'
+											width='100'
+										/></td>
+									<td>{{shortDescription}}</td>
+
+									<td>{{categoryId}}</td>
+
+									<td class='text-right'>$ {{salePrice}}</td>
+									<td class='text-right'>$ {{originalPrice}}</td>
+									<td class='text-center'>
+										<img style='border: 1px solid grey' src='{{images}}' width='100' />
+										<img style='border: 1px solid grey' src='{{images}}' width='100' />
+									</td>
+									<td class='text-center'>
+										<a
+											style='justify-content: center;'
+											class='btn btn-outline btn-success btn-xs mb-1'
+											href='products/{{this._id}}'
+										>Edit</a>
+										<a
+											class='btn btn-danger'
+											data-toggle='modal'
+											data-target='#delete-modal'
+											data-id={{this._id}}
+										>
+											Delete
+										</a>
+									</td>
+								</tr>
+							{{/each}}
+						</tbody>
+					</table>
+					<!-- /.table-responsive -->
+
+					<div
+						class='modal fade'
+						id='delete-modal'
+						tabindex='-1'
+						aria-labelledby='exampleModalLabel'
+						aria-hidden='true'
+					>
+						<div class='modal-dialog'>
+							<div class='modal-content'>
+								<div class='modal-header'>
+									<h5 class='modal-title' id='exampleModalLabel'>Warning</h5>
+									<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+										<span aria-hidden='true'>&times;</span>
+									</button>
+								</div>
+								<div class='modal-body'>
+									Are you sure want to delete this product?
+								</div>
+								<div class='modal-footer'>
+									<button
+										type='button'
+										id='btn-delete-product'
+										class='btn btn-danger'
+									>Delete</button>
+									<button
+										type='button'
+										class='btn btn-secondary'
+										data-dismiss='modal'
+									>Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- /.panel -->
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+</div>
+<!-- /#page-wrapper -->
+
+<div class='row'>
+	<div class='col-sm-4'>
+		<div class='dataTables_info' id='dataTables-example_info' role='status' aria-live='polite'>
+			Showing 0 to 0 of {{products.length}} entries
+		</div>
+	</div>
+	<div class='col-sm-8'>
+		<nav aria-label='...'>
+			<ul class='pagination'>
+				<li class='page-item disabled'>
+					<a class='page-link' href='#' tabindex='-1' aria-disabled='true'>Previous</a>
+				</li>
+				<li class='page-item'><a class='page-link' href='?page=1'>1</a></li>
+				<li class='page-item active' aria-current='page'>
+					<a class='page-link' href='?page=2'>2</a>
+				</li>
+				<li class='page-item'><a class='page-link' href="?page=3">3</a></li>
+				<li class='page-item'>
+					<a class='page-link' href='#'>Next</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
+
+<form name='delete-form' method='POST'></form>
