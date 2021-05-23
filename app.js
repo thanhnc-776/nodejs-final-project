@@ -38,4 +38,25 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
+app.start = (PORT) => {
+  // return new Promise(async (resolve, reject) => {
+  // 	await mongoose
+  // 		.connect(MONGO_URL, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+  // 		.then(() => {
+  // 			debug('Database connect success');
+  // 		})
+  // 		.catch((err) => {
+  // 			debug('Database connection error:' + err);
+  // 		});
+  const server = app.listen(PORT, (err) => {
+    if (err) {
+      // return reject(err);
+      console.log(err);
+    }
+    console.log("App started and listening on port", PORT);
+    // resolve(server);
+  });
+  // });
+};
+
 module.exports = app;
