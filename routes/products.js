@@ -49,7 +49,7 @@ router.post('/products/create', upload.single('image'), async (req, res) => {
 	const product = new Product({ thumbnail: filePath, ...userDetails });
 	product
 		.save()
-		.then((product) => res.redirect(`/products/${product._id}`))
+		.then((product) => res.redirect(`/admin/products/${product._id}`))
 		.catch((err) => console.log(err));
 });
 
@@ -62,7 +62,7 @@ router.get('/products/:id', async (req, res) => {
 
 router.put('/products/:id', async (req, res) => {
 	await Product.updateOne({ _id: req.params.id }, req.body)
-		.then(() => res.redirect('/products'))
+		.then(() => res.redirect('/admin/products'))
 		.catch((err) => console.log(err));
 });
 
