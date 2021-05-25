@@ -13,20 +13,15 @@ const upload = multer({ storage: Storage, limits: { fileSize: 1024 * 1024 * 2 } 
 
 router.get('/users', async (req, res) => {
 	const userQuery = User.find({}).lean();
-	// res.render('users', { title: 'Users' });
-	await User.find({})
-		.lean()
-		.then((users) => res.render('users', { title: 'Users', users }))
-		.catch((err) => console.log(err));
 
-	// req.query.hasOwnProperty('_sort')
-	// 	? await userQuery
-	// 			.sortable(req)
-	// 			.then((users) => res.render('users', { title: 'Users', users }))
-	// 			.catch((err) => console.log(err))
-	// 	: await userQuery
-	// 			.then((users) => res.render('users', { title: 'Users', users }))
-	// 			.catch((err) => console.log(err));
+	req.query.hasOwnProperty('_sort')
+		? await userQuery
+				.sortable(req)
+				.then((users) => res.render('users', { title: 'Users', users }))
+				.catch((err) => console.log(err))
+		: await userQuery
+				.then((users) => res.render('users', { title: 'Users', users }))
+				.catch((err) => console.log(err));
 });
 
 router.get('/users/create', async (req, res) => {

@@ -43,6 +43,7 @@
 						<div class='col-sm-6'><div id='dataTables-example_filter' class='dataTables_filter'>
 								<label class='label'>Search:
 									<input
+                    id="input-filter"
 										type='search'
 										class='form-control form-format input-sm'
 										placeholder=''
@@ -59,18 +60,8 @@
 					>
 						<thead>
 							<tr>
+
 								<th>
-									#
-								</th>
-								<th>Name</th>
-								<th>Thumbnail</th>
-								<th>Description</th>
-								<th>Category ID</th>
-								<th>Sale Price</th>
-								<th>Original Price</th>
-								<th>Product Images</th>
-								<th>Action</th>
-								{{!-- <th>
 									#
 									{{{sortable '_id' _sort}}}
 								</th>
@@ -81,7 +72,7 @@
 								<th>Sale Price {{{sortable 'salePrice' _sort}}}</th>
 								<th>Original Price {{{sortable 'originalPrice' _sort}}}</th>
 								<th>Product Images</th>
-								<th>Action</th> --}}
+								<th>Action</th>
 
 							</tr>
 						</thead>

@@ -12,29 +12,25 @@ const Storage = multer.diskStorage({
 const upload = multer({ storage: Storage, limits: { fileSize: 1024 * 1024 * 2 } });
 
 router.get('/products', async (req, res) => {
-  await Product.find({})
-		.lean()
-		.then((products) => res.render('products', { title: 'Products', products }))
-		.catch((err) => console.log(err));
-	// let { page, size } = parseInt(req.query);
-	// let skip = (page - 1) * size;
+	let { page, size } = parseInt(req.query);
+	let skip = (page - 1) * size;
 
-	// if (req.query.hasOwnProperty('_sort')) {
-	// 	await Product.find({})
-	// 		.lean()
-	// 		.sortable(req)
-	// 		.skip(skip)
-	// 		.limit(size)
-	// 		.then((products) => res.render('products', { title: 'Products', products }))
-	// 		.catch((err) => console.log(err));
-	// } else {
-	// 	await Product.find({})
-	// 		.lean()
-	// 		.skip(skip)
-	// 		.limit(size)
-	// 		.then((products) => res.render('products', { title: 'Products', products }))
-	// 		.catch((err) => console.log(err));
-	// }
+	if (req.query.hasOwnProperty('_sort')) {
+		await Product.find({})
+			.lean()
+			.sortable(req)
+			.skip(skip)
+			.limit(size)
+			.then((products) => res.render('products', { title: 'Products', products }))
+			.catch((err) => console.log(err));
+	} else {
+		await Product.find({})
+			.lean()
+			.skip(skip)
+			.limit(size)
+			.then((products) => res.render('products', { title: 'Products', products }))
+			.catch((err) => console.log(err));
+	}
 });
 
 router.get('/products/create', async (req, res) => {
@@ -44,7 +40,7 @@ router.get('/products/create', async (req, res) => {
 router.post('/products/create', upload.single('image'), async (req, res) => {
 	const userDetails = req.body;
 	const imageFile = req.file;
-	const { path: filePath } = imageFile;
+	const { path: filePath } = imageFile || '';
 
 	const product = new Product({ thumbnail: filePath, ...userDetails });
 	product
