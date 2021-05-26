@@ -28,6 +28,7 @@
 							<div class='dataTables_length' id='dataTables-example_length'>
 								<label class='label'>Show
 									<select
+										id='select-dropdown'
 										name='dataTables-example_length'
 										aria-controls='dataTables-example'
 										class='form-control form-format input-sm'
@@ -43,7 +44,7 @@
 						<div class='col-sm-6'><div id='dataTables-example_filter' class='dataTables_filter'>
 								<label class='label'>Search:
 									<input
-                    id="input-filter"
+										id='input-filter'
 										type='search'
 										class='form-control form-format input-sm'
 										placeholder=''
@@ -94,7 +95,12 @@
 									<td class='text-right'>$ {{salePrice}}</td>
 									<td class='text-right'>$ {{originalPrice}}</td>
 									<td class='text-center'>
-										<img style='border: 1px solid grey' src='{{images}}' width='100' />
+										<img
+											class='mb-8'
+											style='border: 1px solid grey;'
+											src='{{images}}'
+											width='100'
+										/>
 										<img style='border: 1px solid grey' src='{{images}}' width='100' />
 									</td>
 									<td class='text-center'>
@@ -165,7 +171,9 @@
 <div class='row'>
 	<div class='col-sm-4'>
 		<div class='dataTables_info' id='dataTables-example_info' role='status' aria-live='polite'>
-			Showing 0 to 0 of {{products.length}} entries
+			Showing 0 to 0 of
+			{{products.length}}
+			entries
 		</div>
 	</div>
 	<div class='col-sm-8'>
@@ -178,7 +186,7 @@
 				<li class='page-item active' aria-current='page'>
 					<a class='page-link' href='?page=2'>2</a>
 				</li>
-				<li class='page-item'><a class='page-link' href="?page=3">3</a></li>
+				<li class='page-item'><a class='page-link' href='?page=3'>3</a></li>
 				<li class='page-item'>
 					<a class='page-link' href='#'>Next</a>
 				</li>

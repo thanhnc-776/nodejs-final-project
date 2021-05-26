@@ -14,9 +14,10 @@ const upload = multer({ storage: Storage, limits: { fileSize: 1024 * 1024 * 2 } 
 router.get('/products', async (req, res) => {
 	let { page, size } = parseInt(req.query);
 	let skip = (page - 1) * size;
+  console.log(res.body[0]);
 
 	if (req.query.hasOwnProperty('_sort')) {
-		await Product.find({})
+		await Product.find({name: {$regex: "winter", $options: 'i'}})
 			.lean()
 			.sortable(req)
 			.skip(skip)

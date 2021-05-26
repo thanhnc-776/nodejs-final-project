@@ -15,5 +15,29 @@ document.addEventListener('DOMContentLoaded', () => {
 	$('#input-filter').on('keyup', function () {
 		let value = $(this).val();
 		console.log(value);
+		// try {
+		// 	const res = await fetch(`/admin/products?search=${value}`, {
+		// 		method: 'GET',
+		// 		headers: { 'Content-Type': 'application/json' },
+		// 	});
+		// 	const data = await res.json();
+		// 	console.log(data);
+		// } catch (error) {
+		// 	console.log(error);
+		// }
+	});
+
+	$('#select-dropdown').on('change', async function () {
+		let value = this.value;
+		// try {
+		// 	const res = await fetch(`/admin/products?page=${value}`, {
+		// 		method: 'GET',
+		// 		headers: { 'Content-Type': 'application/json' },
+		// 	});
+		// 	const data = await res.json();
+		// 	console.log(data);
+		// } catch (error) {
+		// 	console.log(error);
+		// }
 	});
 });

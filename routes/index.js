@@ -4,7 +4,7 @@ const Product = require('../models/product');
 const Category = require('../models/category');
 const User = require('../models/user');
 
-router.get('/admin', async (req, res) => {
+router.get('/', async (req, res) => {
 	let products = await Product.countDocuments({});
 	let categories = await Category.countDocuments({});
 	let users = await User.countDocuments({});
@@ -16,27 +16,27 @@ router.get('/admin', async (req, res) => {
 	});
 });
 
-router.get('/admin/orders', (req, res) => {
+router.get('/orders', (req, res) => {
 	res.render('orders', { title: 'Orders' });
 });
 
-router.get('/admin/404', (req, res) => {
+router.get('/404', (req, res) => {
 	res.render('404', { title: '404' });
 });
 
-router.get('/admin/blank', (req, res) => {
+router.get('/blank', (req, res) => {
 	res.render('blank', { title: 'Blank' });
 });
 
-router.get('/admin/login', (req, res) => {
+router.get('/login', (req, res) => {
 	res.render('login', { layout: 'form', title: 'Login' });
 });
 
-router.get('/admin/register', (req, res) => {
+router.get('/register', (req, res) => {
 	res.render('register', { layout: 'form', title: 'Register' });
 });
 
-router.get('/admin/forgot-password', (req, res) => {
+router.get('/forgot-password', (req, res) => {
 	res.render('forgot-password', { layout: 'form', title: 'Forgot Password' });
 });
 
