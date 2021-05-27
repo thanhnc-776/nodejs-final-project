@@ -5,7 +5,6 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
-// const methodOverride = require('method-override');
 
 const debug = require('debug')('app');
 
@@ -37,7 +36,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(methodOverride('_method'));
 app.use(sortMiddleware);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin/uploads', express.static('uploads'));

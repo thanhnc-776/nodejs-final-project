@@ -3,14 +3,34 @@ const collection = 'products';
 
 module.exports = (router) => {
 	router.get(`/${collection}`, (req, res) => {
-		Product.find({})
-			.exec()
-			.then((products) => {
-				res.sendRest(products);
+		let filter = req.query.filter || '';
+		let keyword = req.query.search || '';
+		if (filter) {
+			filter = JSON.parse(filter);
+			let { offset = 0, limit = 10, page = 1 } = filter;
+			offset < 0 ? (offset = 0) : offset;
+			limit < 0 ? (limit = 0) : limit;
+			page < 0 ? (page = 0) : page;
+
+			Product.find({})
+				.lean()
+				.skip(offset)
+				.limit(limit)
+				.then((products) => res.json(products))
+				.catch((err) => console.log(err));
+		} else if (keyword) {
+			Product.find({
+				name: { $regex: keyword || '', $options: 'i' },
 			})
-			.catch((err) => {
-				res.sendRest(err);
-			});
+				.lean()
+				.then((products) => res.json(products))
+				.catch((err) => console.log(err));
+		} else {
+			Product.find({})
+				.lean()
+				.then((products) => res.json({products, total: products.length}))
+				.catch((err) => console.log(err));
+		}
 	});
 
 	router.post(`/${collection}`, (req, res) => {

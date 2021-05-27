@@ -12,23 +12,17 @@ const Storage = multer.diskStorage({
 const upload = multer({ storage: Storage, limits: { fileSize: 1024 * 1024 * 2 } });
 
 router.get('/products', async (req, res) => {
-	let page = parseInt(req.query) || 1;
-	let size = parseInt(req.query) || 10;
-	let skip = (page - 1) * size;
-
 	if (req.query.hasOwnProperty('_sort')) {
-		await Product.find({name: {$regex: "winter", $options: 'i'}})
+		await Product.find({})
 			.lean()
 			.sortable(req)
-			.skip(skip)
-			.limit(size)
+			.limit(10)
 			.then((products) => res.render('products', { title: 'Products', products }))
 			.catch((err) => console.log(err));
 	} else {
 		await Product.find({})
 			.lean()
-			.skip(skip)
-			.limit(size)
+			.limit(10)
 			.then((products) => res.render('products', { title: 'Products', products }))
 			.catch((err) => console.log(err));
 	}
