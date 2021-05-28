@@ -13,63 +13,67 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	$('#input-filter').on('keyup', function () {
-		let keyword = $(this).val();
-		$.ajax({
-			url: `/api/products?search=${keyword}`,
-			type: 'GET',
-		})
-			.then((data) => {
-				$('#tbody-products').html('');
-				for (let i = 0; i < data.length; i++) {
-					const ele = data[i];
+		let keyword = $(this).val() || '';
+		if(keyword !== '') {
+      $.ajax({
+        url: `/api/products?search=${keyword}`,
+        type: 'GET',
+      })
+        .then((data) => {
+          $('#tbody-products').html('');
+          for (let i = 0; i < data.length; i++) {
+            const ele = data[i];
 
-					let item = $(`
-            <tr>
-              <td>${ele._id}</td>
-              <td>${ele.name}</td>
-              <td><img
-                  style='border: 1px solid grey'
-                  src='${ele.thumbnail}'
-                  alt='${ele.name}'
-                  width='100'
-                /></td>
-              <td>${ele.shortDescription}</td>
+            let item = $(`
+              <tr>
+                <td>${ele._id}</td>
+                <td>${ele.name}</td>
+                <td><img
+                    style='border: 1px solid grey'
+                    src='${ele.thumbnail}'
+                    alt='${ele.name}'
+                    width='100'
+                  /></td>
+                <td>${ele.shortDescription}</td>
 
-              <td>${ele.categoryId}</td>
+                <td>${ele.categoryId}</td>
 
-              <td class='text-right'>$ ${ele.salePrice}</td>
-              <td class='text-right'>$ ${ele.originalPrice}</td>
-              <td class='text-center'>
-                <img
-                  class='mb-8'
-                  style='border: 1px solid grey;'
-                  src='${ele.images[0]}'
-                  width='100'
-                />
-                <img style='border: 1px solid grey' src='${ele.images[1]}' width='100' />
-              </td>
-              <td class='text-center'>
-                <a
-                  style='justify-content: center;'
-                  class='btn btn-outline btn-success btn-xs mb-1'
-                  href='products/${this._id}'
-                >Edit</a>
-                <a
-                  class='btn btn-danger'
-                  data-toggle='modal'
-                  data-target='#delete-modal'
-                  data-id=${this._id}
-                >
-                  Delete
-                </a>
-              </td>
-            </tr>
-          `);
+                <td class='text-right'>$ ${ele.salePrice}</td>
+                <td class='text-right'>$ ${ele.originalPrice}</td>
+                <td class='text-center'>
+                  <img
+                    class='mb-8'
+                    style='border: 1px solid grey;'
+                    src='${ele.images[0]}'
+                    width='100'
+                  />
+                  <img style='border: 1px solid grey' src='${ele.images[1]}' width='100' />
+                </td>
+                <td class='text-center'>
+                  <a
+                    style='justify-content: center;'
+                    class='btn btn-outline btn-success btn-xs mb-1'
+                    href='products/${this._id}'
+                  >Edit</a>
+                  <a
+                    class='btn btn-danger'
+                    data-toggle='modal'
+                    data-target='#delete-modal'
+                    data-id=${this._id}
+                  >
+                    Delete
+                  </a>
+                </td>
+              </tr>
+            `);
 
-					$('#tbody-products').append(item);
-				}
-			})
-			.catch((err) => console.log(err));
+            $('#tbody-products').append(item);
+          }
+        })
+        .catch((err) => console.log(err));
+    } else {
+      loadPage(1);
+    }
 	});
 });
 

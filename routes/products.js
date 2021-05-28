@@ -43,10 +43,6 @@ router.post('/products/create', upload.single('image'), async (req, res) => {
 			.save()
 			.then((product) => res.redirect(`/admin/products/${product._id}`))
 			.catch((err) => console.log(err));
-		// await product
-		// .save()
-		// .then((product) => res.redirect(`/admin/products/${product._id}`))
-		// .catch((err) => console.log(err));
 	} catch (error) {
 		console.log(error);
 	}
