@@ -11,6 +11,7 @@ const ProductSchema = new Schema({
 	originalPrice: SchemaTypes.Number,
 	images: [SchemaTypes.String],
 	thumbnails: [SchemaTypes.String],
+  cloudinary_id: String,
 	categoryId: {
 		type: SchemaTypes.String,
 		ref: 'Category',

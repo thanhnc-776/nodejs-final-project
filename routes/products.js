@@ -1,15 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/product');
-const multer = require('multer');
 
-const Storage = multer.diskStorage({
-	destination: 'uploads',
-	filename: (req, file, cb) => {
-		cb(null, Date.now() + '-' + file.originalname);
-	},
-});
-const upload = multer({ storage: Storage, limits: { fileSize: 1024 * 1024 * 2 } });
+const upload = require('../utils/multer');
+const cloudinary = require('../utils/cloudinary');
 
 router.get('/products', async (req, res) => {
 	if (req.query.hasOwnProperty('_sort')) {
@@ -33,15 +27,29 @@ router.get('/products/create', async (req, res) => {
 });
 
 router.post('/products/create', upload.single('image'), async (req, res) => {
-	const userDetails = req.body;
-	const imageFile = req.file;
-	const { path: filePath } = imageFile || '';
+	try {
+		const result = await cloudinary.uploader.upload(req.file.path);
 
-	const product = new Product({ thumbnail: filePath, ...userDetails });
-	product
-		.save()
-		.then((product) => res.redirect(`/admin/products/${product._id}`))
-		.catch((err) => console.log(err));
+		let product = new Product({
+			name: req.body.name,
+			thumbnail: result.secure_url,
+			shortDescription: req.body.shortDescription,
+			categoryId: req.body.categoryId,
+			salePrice: req.body.salePrice,
+			originalPrice: req.body.originalPrice,
+			cloudinary_id: result.public_id,
+		});
+		await product
+			.save()
+			.then((product) => res.redirect(`/admin/products/${product._id}`))
+			.catch((err) => console.log(err));
+		// await product
+		// .save()
+		// .then((product) => res.redirect(`/admin/products/${product._id}`))
+		// .catch((err) => console.log(err));
+	} catch (error) {
+		console.log(error);
+	}
 });
 
 router.get('/products/:id', async (req, res) => {

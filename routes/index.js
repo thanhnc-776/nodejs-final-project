@@ -16,6 +16,12 @@ router.get('/', async (req, res) => {
 	});
 });
 
+router.get('/categories', async (req, res) => {
+	await Category.find({})
+		.lean()
+		.then((categories) => res.render('categories', { title: 'Categories', categories }));
+});
+
 router.get('/orders', (req, res) => {
 	res.render('orders', { title: 'Orders' });
 });

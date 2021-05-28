@@ -5,7 +5,10 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
+const dotenv = require('dotenv');
+const methodOverride = require('method-override');
 
+dotenv.config();
 const debug = require('debug')('app');
 
 const indexRouter = require('./routes/index');
@@ -39,6 +42,7 @@ app.use(cookieParser());
 app.use(sortMiddleware);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin/uploads', express.static('uploads'));
+app.use(methodOverride('_method'));
 
 app.use('/admin', indexRouter);
 app.use('/admin', usersRouter);

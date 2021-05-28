@@ -155,7 +155,7 @@ let currentPage = 1;
 
 function loadPage(page) {
 	currentPage = page;
-	let limit = 5;
+	let limit = 10;
 	let skip = (page - 1) * limit || 0;
 
 	if (currentPage === 1) {
