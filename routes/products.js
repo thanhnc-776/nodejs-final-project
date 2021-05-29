@@ -10,13 +10,11 @@ router.get('/products', async (req, res) => {
 		await Product.find({})
 			.lean()
 			.sortable(req)
-			.limit(10)
 			.then((products) => res.render('products', { title: 'Products', products }))
 			.catch((err) => console.log(err));
 	} else {
 		await Product.find({})
 			.lean()
-			.limit(10)
 			.then((products) => res.render('products', { title: 'Products', products }))
 			.catch((err) => console.log(err));
 	}

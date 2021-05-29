@@ -22,56 +22,17 @@
 				</div>
 				<!-- /.panel-heading -->
 				<div class='panel-body'>
-					<div class='sort'>
-						<div class='col-sm-6'>
-							<div class='dataTables_length' id='dataTables-example_length'>
-								<label class='label'>Show
-									<select
-										name='dataTables-example_length'
-										aria-controls='dataTables-example'
-										class='form-control form-format input-sm'
-									>
-										<option value='10'>10</option>
-										<option value='25'>25</option>
-										<option value='50'>50</option>
-										<option value='100'>100</option>
-									</select>
-									entries
-								</label>
-							</div>
-						</div>
-						<div class='col-sm-6'>
-							<div id='dataTables-example_filter' class='dataTables_filter'>
-								<label class='label'>Search:
-									<input
-										type='search'
-										class='form-control form-format input-sm'
-										placeholder=''
-										aria-controls='dataTables-example'
-									/>
-								</label>
-							</div>
-						</div>
-					</div>
-					<table width='100%' class='table table-striped table-bordered' id='dataTables-example'>
+					<table id='datatable-user' class='display' style='width:100%'>
 						<thead>
 							<tr>
 
-								{{! <th>ID</th>
+								<th>ID</th>
 								<th>Avatar</th>
 								<th>First Name</th>
 								<th>Last Name</th>
 								<th>DoB</th>
 								<th>Email</th>
-								<th>Role</th> }}
-
-								<th>ID {{{sortable '_id' _sort}}}</th>
-								<th>Avatar</th>
-								<th>First Name {{{sortable 'firstName' _sort}}}</th>
-								<th>Last Name {{{sortable 'lastName' _sort}}}</th>
-								<th>DoB {{{sortable 'dob' _sort}}}</th>
-								<th>Email {{{sortable 'email' _sort}}}</th>
-								<th>Role {{{sortable 'role' _sort}}}</th>
+								<th>Role</th>
 
 							</tr>
 						</thead>
@@ -102,7 +63,7 @@
 									<td>{{role}}</td>
 								</tr>
 
-								<tr class='collapse' id='toggleCollapse' aria-hidden='true'>
+								{{!-- <tr class='collapse' id='toggleCollapse' aria-hidden='true'>
 									<td class='child' colspan='8'>
 										<ul class='child-list' data-dtr-index='0'>
 											<li data-dtr-index='8'>
@@ -127,7 +88,7 @@
 											</li>
 										</ul>
 									</td>
-								</tr>
+								</tr> --}}
 
 							{{/each}}
 
@@ -136,47 +97,6 @@
 					<!-- /.table-responsive -->
 				</div>
 				<!-- /.panel-body -->
-				<div class='row'>
-					<div class='col-sm-4'>
-						<div
-							class='dataTables_info'
-							id='dataTables-example_info'
-							role='status'
-							aria-live='polite'
-						>
-							Showing 0 to 0 of
-							{{users.length}}
-							entries
-						</div>
-					</div>
-					<div class='col-sm-8'>
-						<nav aria-label='...'>
-							<ul class='pagination'>
-								<li class='page-item'>
-									<a
-										class='page-link prev-page'
-										href='#'
-										tabindex='-1'
-										aria-disabled='true'
-										onclick='previousPage()'
-									>Previous</a>
-								</li>
-								<li class='page-item page-click active' onclick='loadPage(1)'>
-									<a class='page-link' href='?page=1'>1</a>
-								</li>
-								<li class='page-item page-click' onclick='loadPage(2)'>
-									<a class='page-link' href='?page=2'>2</a>
-								</li>
-								<li class='page-item page-click' onclick='loadPage(3)'>
-									<a class='page-link' href='?page=3'>3</a>
-								</li>
-								<li class='page-item next-page'>
-									<a class='page-link' href='#' onclick='nextPage()'>Next</a>
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</div>
 			</div>
 			<!-- /.panel -->
 		</div>

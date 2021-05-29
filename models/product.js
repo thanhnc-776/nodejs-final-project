@@ -20,16 +20,6 @@ const ProductSchema = new Schema({
 	},
 });
 
-ProductSchema.query.sortable = function (req) {
-  if (req.query.hasOwnProperty('_sort')) {
-		const isValidType = ['asc', 'desc'].includes(req.query.type);
-		return this.sort({
-			[req.query.column]: isValidType ? req.query.type : 'desc',
-		});
-    return this;
-	}
-}
-
 ProductSchema.virtual('saleOff').get(function () {
 	return this.originalPrice ? (this.originalPrice - this.salePrice) / this.originalPrice : 0;
 });

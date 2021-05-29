@@ -14,9 +14,7 @@ const debug = require('debug')('app');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
-const categoriesRouter = require('./routes/categories');
 const apiRouter = require('./routes/api/api');
-const sortMiddleware = require('./middleware/sortMiddleware');
 
 const app = express();
 app.log = debug;
@@ -39,7 +37,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(sortMiddleware);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin/uploads', express.static('uploads'));
 app.use(methodOverride('_method'));
@@ -47,7 +44,6 @@ app.use(methodOverride('_method'));
 app.use('/admin', indexRouter);
 app.use('/admin', usersRouter);
 app.use('/admin', productsRouter);
-app.use('/admin', categoriesRouter);
 app.use('/api', apiRouter);
 
 app.use(function (req, res, next) {

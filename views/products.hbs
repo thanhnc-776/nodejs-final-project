@@ -23,61 +23,23 @@
 				</div>
 				<!-- /.panel-heading -->
 				<div class='panel-body'>
-					<div class='sort'>
-						<div class='col-sm-6'>
-							<div class='dataTables_length' id='dataTables-example_length'>
-								<label class='label'>Show
-									<select
-										id='select-dropdown'
-										name='dataTables-example_length'
-										aria-controls='dataTables-example'
-										class='form-control form-format input-sm'
-									>
-										<option value='10'>10</option>
-										<option value='25'>25</option>
-										<option value='50'>50</option>
-										<option value='100'>100</option>
-									</select>
-									entries</label>
-							</div>
-						</div>
-						<div class='col-sm-6'><div id='dataTables-example_filter' class='dataTables_filter'>
-								<label class='label'>Search:
-									<input
-										id='input-filter'
-										type='search'
-										class='form-control form-format input-sm'
-										placeholder=''
-										aria-controls='dataTables-example'
-									/>
-								</label>
-							</div>
-						</div>
-					</div>
-					<table
-						width='100%'
-						class='table table-striped table-bordered table-hover'
-						id='dataTables-example'
-					>
+					<table id='datatable-product' class='display' style='width:100%'>
 						<thead>
 							<tr>
-
 								<th>
 									#
-									{{{sortable '_id' _sort}}}
 								</th>
-								<th>Name {{{sortable 'name' _sort}}}</th>
+								<th>Name</th>
 								<th>Thumbnail</th>
-								<th>Description {{{sortable 'shortDescription' _sort}}}</th>
-								<th>Category ID {{{sortable 'categoryId' _sort}}}</th>
-								<th>Sale Price {{{sortable 'salePrice' _sort}}}</th>
-								<th>Original Price {{{sortable 'originalPrice' _sort}}}</th>
+								<th>Description</th>
+								<th>Category ID</th>
+								<th>Sale Price</th>
+								<th>Original Price</th>
 								<th>Product Images</th>
 								<th>Action</th>
-
 							</tr>
 						</thead>
-						<tbody id='tbody-products'>
+						<tbody>
 							{{#each products}}
 								<tr>
 									<td>{{_id}}</td>
@@ -168,7 +130,7 @@
 </div>
 <!-- /#page-wrapper -->
 
-<div class='row'>
+{{!-- <div class='row'>
 	<div class='col-sm-4'>
 		<div class='dataTables_info' id='dataTables-example_info' role='status' aria-live='polite'>
 			Showing 0 to
@@ -185,24 +147,24 @@
 						href='#'
 						tabindex='-1'
 						aria-disabled='true'
-						onclick='previousPage()'
+						onclick='previousPageProduct()'
 					>Previous</a>
 				</li>
-				<li class='page-item page-click active' onclick='loadPage(1)'>
-					<a class='page-link' href='?page=1'>1</a>
+				<li class='page-item page-click active' onclick='loadPageProduct(1)'>
+					<a class='page-link' href='#'>1</a>
 				</li>
-				<li class='page-item page-click' onclick='loadPage(2)'>
-					<a class='page-link' href='?page=2'>2</a>
+				<li class='page-item page-click' onclick='loadPageProduct(2)'>
+					<a class='page-link' href='#'>2</a>
 				</li>
-				<li class='page-item page-click' onclick='loadPage(3)'>
-					<a class='page-link' href='?page=3'>3</a>
+				<li class='page-item page-click' onclick='loadPageProduct(3)'>
+					<a class='page-link' href='#'>3</a>
 				</li>
 				<li class='page-item next-page'>
-					<a class='page-link' href='#' onclick='nextPage()'>Next</a>
+					<a class='page-link' href='#' onclick='nextPageProduct()'>Next</a>
 				</li>
 			</ul>
 		</nav>
 	</div>
-</div>
+</div> --}}
 
 <form name='delete-form' method='POST'></form>

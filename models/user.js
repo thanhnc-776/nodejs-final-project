@@ -17,16 +17,6 @@ const UserSchema = new Schema({
 	country: String,
 });
 
-UserSchema.query.sortable = function (req) {
-  if (req.query.hasOwnProperty('_sort')) {
-		const isValidType = ['asc', 'desc'].includes(req.query.type);
-		return this.sort({
-			[req.query.column]: isValidType ? req.query.type : 'desc',
-		});
-    return this;
-	}
-}
-
 UserSchema.virtual('fullName')
 	.get(function () {
 		return this.firstName + ' ' + this.lastName;
@@ -43,11 +33,5 @@ UserSchema.pre('save', function () {
 UserSchema.index({ email: 1 });
 
 const User = mongoose.model('User', UserSchema);
-// User.ensureIndexes((err) => {
-//   console.log('ENSURE INDEX');
-//   if (err) {
-//     console.log(err);
-//   }
-// });
 
 module.exports = User;
