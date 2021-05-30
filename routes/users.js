@@ -7,16 +7,10 @@ const upload = require('../utils/multer');
 const cloudinary = require('../utils/cloudinary');
 
 router.get('/users', async (req, res) => {
-	const userQuery = User.find({}).lean();
-
-	req.query.hasOwnProperty('_sort')
-		? await userQuery
-				.sortable(req)
-				.then((users) => res.render('users', { title: 'Users', users }))
-				.catch((err) => console.log(err))
-		: await userQuery
-				.then((users) => res.render('users', { title: 'Users', users }))
-				.catch((err) => console.log(err));
+	await User.find({})
+		.lean()
+		.then((users) => res.render('users', { title: 'Users', users }))
+		.catch((err) => console.log(err));
 });
 
 router.get('/users/create', async (req, res) => {

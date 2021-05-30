@@ -6,18 +6,10 @@ const upload = require('../utils/multer');
 const cloudinary = require('../utils/cloudinary');
 
 router.get('/products', async (req, res) => {
-	if (req.query.hasOwnProperty('_sort')) {
-		await Product.find({})
-			.lean()
-			.sortable(req)
-			.then((products) => res.render('products', { title: 'Products', products }))
-			.catch((err) => console.log(err));
-	} else {
-		await Product.find({})
-			.lean()
-			.then((products) => res.render('products', { title: 'Products', products }))
-			.catch((err) => console.log(err));
-	}
+	await Product.find({})
+		.lean()
+		.then((products) => res.render('products', { title: 'Products', products }))
+		.catch((err) => console.log(err));
 });
 
 router.get('/products/create', async (req, res) => {
