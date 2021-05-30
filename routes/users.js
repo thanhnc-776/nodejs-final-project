@@ -1,15 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const multer = require('multer');
+const mongoose = require("mongoose");
 
-const Storage = multer.diskStorage({
-	destination: 'uploads',
-	filename: (req, file, cb) => {
-		cb(null, Date.now() + '-' + file.originalname);
-	},
-});
-const upload = multer({ storage: Storage, limits: { fileSize: 1024 * 1024 * 2 } });
+const upload = require('../utils/multer');
+const cloudinary = require('../utils/cloudinary');
 
 router.get('/users', async (req, res) => {
 	const userQuery = User.find({}).lean();
@@ -29,21 +24,21 @@ router.get('/users/create', async (req, res) => {
 });
 
 router.post('/users/create', upload.single('avatar'), async (req, res) => {
-	const userDetails = req.body;
-	const avatarFile = req.file;
-	const { path: filePath } = avatarFile;
-
-	const user = new User({ avatar: filePath, ...userDetails });
-	user
-		.save()
-		.then((user) => res.redirect('/users'))
-		.catch((err) => console.log(err));
-
-	// await User.updateOne(
-	// 	{ _id: userDetails.id },
-	// 	{ avatar: `${req.headers.origin}/images/${userDetails.id + '-' + originalname}` }
-	// );
-	// res.status(200).json({ status: 'Update completed', statusCode: 200 });
+	try {
+		const result = await cloudinary.uploader.upload(req.file.path);
+    let newId = new mongoose.Types.ObjectId().toHexString();
+		let user = new User({
+			...req.body,
+      _id: newId,
+			avatar: result.secure_url,
+		});
+		await user
+			.save()
+			.then((user) => res.redirect(`/admin/users`))
+			.catch((err) => console.log(err));
+	} catch (error) {
+		console.log(error);
+	}
 });
 
 module.exports = router;

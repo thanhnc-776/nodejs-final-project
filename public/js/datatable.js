@@ -1,7 +1,5 @@
 $(document).ready(() => {
-	$('#datatable-product').DataTable({
-	});
-  $('#datatable-user').DataTable({
-	});
-});
+	$('#datatable-product').DataTable({});
 
+	$('#datatable-user').DataTable({});
+});

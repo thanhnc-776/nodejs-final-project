@@ -29,12 +29,8 @@ router.post('/products/create', upload.single('image'), async (req, res) => {
 		const result = await cloudinary.uploader.upload(req.file.path);
 
 		let product = new Product({
-			name: req.body.name,
+			...req.body,
 			thumbnail: result.secure_url,
-			shortDescription: req.body.shortDescription,
-			categoryId: req.body.categoryId,
-			salePrice: req.body.salePrice,
-			originalPrice: req.body.originalPrice,
 			cloudinary_id: result.public_id,
 		});
 		await product
@@ -55,7 +51,7 @@ router.get('/products/:id', async (req, res) => {
 
 router.put('/products/:id', async (req, res) => {
 	await Product.updateOne({ _id: req.params.id }, req.body)
-		.then(() => res.redirect('/admin/products'))
+		.then(() => res.redirect(`/admin/products/${req.params.id}`))
 		.catch((err) => console.log(err));
 });
 
